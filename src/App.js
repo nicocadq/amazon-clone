@@ -10,7 +10,7 @@ import { auth } from "./firebase";
 import "./App.css";
 
 const App = () => {
-  const [{ user }, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -30,7 +30,7 @@ const App = () => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <Router>
